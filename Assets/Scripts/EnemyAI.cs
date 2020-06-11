@@ -22,4 +22,9 @@ public class EnemyAI : MonoBehaviour
         if (distanceToTarget <= chaseRange)
             navMeshAgent.SetDestination(target.position);
     }
+
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
+    }
 }
