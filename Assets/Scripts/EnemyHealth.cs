@@ -5,19 +5,9 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float health = 100f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Hit(float damage) {
+        BroadcastMessage("OnDamageTaken");
         health -= damage;
         if (health <= 0) {
             Destroy(gameObject);
