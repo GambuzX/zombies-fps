@@ -253,7 +253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2337074158996965286
 Transform:
   m_ObjectHideFlags: 0
@@ -339,6 +339,7 @@ MonoBehaviour:
   hitEffect: {fileID: 5918704385767238994, guid: 552ac3c75677e3a4dbc6a31b131c0b06,
     type: 3}
   ammoSlot: {fileID: 0}
+  ammoType: 0
   shootCooldown: 0.2
 --- !u!1 &2337074158997199752
 GameObject:

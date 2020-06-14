@@ -46,10 +46,6 @@ public class WeaponSwitcher : MonoBehaviour
     }
 
     private void UpdateActiveWeapon() {
-        WeaponZoom previousZoom = weapons[previousWeapon].GetComponent<WeaponZoom>();
-        if (previousZoom) {
-            previousZoom.SetDefaultZoom();
-        }
         weapons[previousWeapon].SetActive(false);
         weapons[currentWeapon].SetActive(true);
     }
