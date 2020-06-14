@@ -5,17 +5,18 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] Transform target;
     [SerializeField] float chaseRange = 5f;
     [SerializeField] float turnSpeed = 5f;
     bool isProvoked = false;
 
+    private Transform target;
     private NavMeshAgent navMeshAgent;
     private float distanceToTarget = Mathf.Infinity;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        target = GameObject.FindObjectOfType<PlayerHealth>().transform;
     }
 
     void Update()
@@ -42,7 +43,6 @@ public class EnemyAI : MonoBehaviour
         }
         else {
             GetComponent<Animator>().SetBool("attack", true);
-            AttackTarget();
         }
     }
 
@@ -50,11 +50,6 @@ public class EnemyAI : MonoBehaviour
         GetComponent<Animator>().SetTrigger("move");
         navMeshAgent.SetDestination(target.position);
     }
-
-    private void AttackTarget() {
-        Debug.Log("Attacking player");
-    }
-
     private void FaceTarget() {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));

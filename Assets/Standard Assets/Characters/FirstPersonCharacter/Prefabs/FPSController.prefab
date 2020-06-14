@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 2061327491}
   - component: {fileID: 2061327492}
   - component: {fileID: 1496042164}
+  - component: {fileID: 5672573475976765539}
   m_Layer: 0
   m_Name: FPSController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,6 +338,20 @@ MonoBehaviour:
     ammoAmount: 20
   - ammoType: 2
     ammoAmount: 8
+--- !u!114 &5672573475976765539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c885f4ded7602341867aeab6ddab887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactCanvas: {fileID: 0}
+  impactTime: 0.3
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,11 +519,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol
       objectReference: {fileID: 0}
-    - target: {fileID: 2337074158997199750, guid: ea2070b44153ddc47be660bf1e1400c0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2337074158996965286, guid: ea2070b44153ddc47be660bf1e1400c0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -593,11 +603,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shotgun
-      objectReference: {fileID: 0}
-    - target: {fileID: 2337074158997199750, guid: bbfa8908726c58241a992a579422a738,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2337074158996965286, guid: bbfa8908726c58241a992a579422a738,
         type: 3}
@@ -848,6 +853,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 166389553015630329, guid: 57facf0b86e6a8543a0e122f941c0e45,
+        type: 3}
+      propertyPath: m_Range
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57facf0b86e6a8543a0e122f941c0e45, type: 3}
