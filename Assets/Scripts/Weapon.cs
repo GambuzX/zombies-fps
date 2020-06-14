@@ -9,26 +9,38 @@ public class Weapon : MonoBehaviour
     [SerializeField] float damage = 20f;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
+    [SerializeField] Ammo ammoSlot;
+    private bool canShoot = true;
+    [SerializeField] float shootCooldown = 1f;
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1")) {
-            Shoot();
+        if(Input.GetMouseButtonDown(0) && canShoot) {
+            StartCoroutine(Shoot());
         }
     }
 
-    private void Shoot() {
+    private IEnumerator Shoot() {
+        if(ammoSlot.GetCurrentAmmo() <= 0) yield break;
+        
+        canShoot = false;
+        ammoSlot.ReduceCurrentAmmo();
+
         RaycastHit hit;
-        if(!Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range)) return;
+        if(Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range)) {
 
-        CreateHitEffect(hit);
+            CreateHitEffect(hit);
 
-        EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
-        if(target) {
-            PlayMuzzleFlash();
-            target.Hit(damage);
+            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+            if(target) {
+                PlayMuzzleFlash();
+                target.Hit(damage);
+            }
         }
+
+        yield return new WaitForSeconds(shootCooldown);
+        canShoot = true;
     }
 
     private void PlayMuzzleFlash() {
